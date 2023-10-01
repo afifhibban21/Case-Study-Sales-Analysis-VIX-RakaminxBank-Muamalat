@@ -1,0 +1,11 @@
+-- add primary key 
+alter table `endless-duality-400414.Customers1.Customers` add primary key(CustomerID) not enforced;
+alter table `endless-duality-400414.Customers1.Orders` add primary key(OrderID) not enforced;
+alter table `endless-duality-400414.Customers1.ProductCat` add primary key(CategoryID) not enforced;
+alter table `endless-duality-400414.Customers1.Products` add primary key(ProdNumber) not enforced;
+
+-- add foreign key 
+alter table `endless-duality-400414.Customers1.Orders`  add foreign key(CustomerID) references `endless-duality-400414.Customers1.Customers` (CustomerID) not enforced;
+alter table `endless-duality-400414.Customers1.Orders`  add foreign key(ProdNumber) references `endless-duality-400414.Customers1.Products` (ProdNumber) not enforced;
+alter table `endless-duality-400414.Customers1.Products`  add foreign key(Category) references `endless-duality-400414.Customers1.ProductCat` (CategoryID) not enforced;
+
