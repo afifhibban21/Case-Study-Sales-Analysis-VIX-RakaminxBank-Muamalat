@@ -1,0 +1,23 @@
+-- create master table
+
+-- First attempt (Succes)
+
+select 
+ o.Date as order_date, 
+ pc.CategoryName as category_name,
+ p.ProdName as product_name, 
+ p.Price as product_price,
+ o.Quantity as order_qty,
+ (o.Quantity * p.Price) as total_sales,
+ c.CustomerEmail as cust_email,
+ c.CustomerCity as cust_city
+
+ from `Customers1.Customers` as c 
+ left join  `Customers1.Orders` as o
+ on c.CustomerID=o.CustomerID
+ left join `Customers1.Products` as p  
+ on o.ProdNumber=p.ProdNumber
+ left join `Customers1.ProductCat` as pc
+ on p.Category=pc.CategoryID
+ order by Date asc
+
